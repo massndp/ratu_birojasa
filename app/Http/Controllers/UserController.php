@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -57,7 +58,8 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('users.index')->with('success', 'Data user berhasil ditambahkan');
+        Alert::toast('Data user berhasil ditambahkan', 'success');
+        return redirect()->route('users.index');
 
 
     }
@@ -108,7 +110,8 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('users.index')->with('success', 'Data user berhasil diupdate');
+        Alert::toast('Data user berhasil diupdate', 'success');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -121,6 +124,8 @@ class UserController extends Controller
     {
         User::find($id)->delete();
 
-        return redirect()->route('users.index')->with('success', 'Data user berhasil dihapus');
+        Alert::success('Success', 'Data user berhasil dihapus');
+
+        return redirect()->route('users.index');
     }
 }

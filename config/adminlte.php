@@ -267,17 +267,13 @@ return [
         ['header' => 'Layanan'],
         [
             'text'    => 'Mobil',
+            'route'  => 'cars.index',
             'icon'    => 'fas fa-fw fa-car',
-            'submenu' => [
-                [
-                    'text' => 'BBN, Hernopol, Duplikat',
-                    'route'  => 'cars.index',
-                ],
-                [
-                    'text' => 'Pengesahan & Perpanjangan Pajak',
-                    'url'  => '#',
-                ],
-            ],
+        ],
+        [
+            'text'    => 'Motor',
+            'url'  => '#',
+            'icon'    => 'fas fa-fw fa-motorcycle',
         ],
 
     ],
