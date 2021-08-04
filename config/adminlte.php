@@ -272,7 +272,7 @@ return [
         ],
         [
             'text'    => 'Motor',
-            'url'  => '#',
+            'route'  => 'motors.index',
             'icon'    => 'fas fa-fw fa-motorcycle',
         ],
 

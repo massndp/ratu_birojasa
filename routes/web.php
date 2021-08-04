@@ -29,5 +29,11 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('cars', 'CarController');
     Route::get('/export_excel', 'CarController@export_excel')
             ->name('car.export');
+
+    Route::get('motors/{id}/set-status', 'MotorController@setStatus')
+                ->name('motors.status');       
+    Route::resource('motors', 'MotorController');
+    Route::get('/export_excels', 'MotorController@export_excel')
+            ->name('motors.export');
     
 });
