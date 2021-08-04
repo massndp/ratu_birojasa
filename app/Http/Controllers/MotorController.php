@@ -160,6 +160,7 @@ class MotorController extends Controller
         $motor = Motor::find($id)->delete();
 
         Alert::toast('Data layanan berhasil dihapus', 'success');
+        return redirect()->route('motors.index');
     }
 
     public function setStatus(Request $request, $id)
