@@ -1,4 +1,11 @@
+@extends('adminlte::page')
 
+@section('title', 'Edit Layanan')
+
+@section('content_header')
+    <h2>Edit Layanan</h2>
+@endsection
+@section('content')
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -52,7 +59,7 @@
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="keterangan">Keterangan</label>
-                                    <input type="text" class="form-control" name="keterangan" value="{{isset($car) ? $car->keterangan : old('keterangan')}}">
+                                    <textarea name="keterangan" rows="10" class="form-control">{{isset($car) ? $car->keterangan : old('keterangan')}}</textarea>
                                 </div>
                             </div>
                             <button class="btn btn-primary" type="submit">
@@ -67,12 +74,24 @@
             </div>
         </div>
     </div>
-</div>
+</div>  
+@stop
+
 
 @section('css')
 
 @stop
 
 @section('js')
-    
+<script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+            .create( document.querySelector( '#ckeditor' ) )
+            .then( editor => {
+                    console.log( editor );
+            } )
+            .catch( error => {
+                    console.error( error );
+            } );
+</script> 
 @stop

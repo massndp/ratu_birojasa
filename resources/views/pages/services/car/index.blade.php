@@ -51,7 +51,7 @@
                                        </div>
                                        <div class="form-group col-12">
                                             <label for="tanggal_terima">Tanggal Terima</label>
-                                            <input type="date" class="form-control" name="tanggal_terima" required>
+                                            <input type="date" class="form-control datepicker" name="tanggal_terima" required>
                                         </div>
                                         <div class="form-group col-6">
                                            <label for="dp">DP</label>
@@ -63,7 +63,7 @@
                                     </div>
                                         <div class="form-group col-12">
                                            <label for="keterangan">Keterangan</label>
-                                           <textarea name="keterangan" id="ckeditor" cols="30" rows="30"></textarea>
+                                           <textarea name="keterangan" class="form-control" cols="10" rows="10"></textarea>
                                        </div>
                                         <button class="btn btn-primary ml-1 mr-1" type="submit">
                                            <i class="fa fa-save"></i> Simpan
@@ -103,14 +103,16 @@
       </div>
       @endif
 
+      @include('sweetalert::alert')
+
       {{-- alert success --}}
-      @if (session('success'))
+      {{-- @if (session('success'))
         <div class="alert alert-success alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <i class="fa fa-check-circle"></i> 
             {{session('success')}}
         </div>
-      @endif
+      @endif --}}
 
    <div class="content">
        <div class="container-fluid">
@@ -127,8 +129,8 @@
                                 <th>No Mesin</th>
                                 <th>Nama STNK</th>
                                 <th>DP</th>
-                                <th>Tanggal Terima</th>
                                 <th>Estimasi</th>
+                                <th>Tanggal Terima</th>
                                 <th>Keterangan</th>
                                 <th>User</th>
                                 <th>Action</th>
@@ -146,9 +148,9 @@
                                     <td>{{$car->no_rangka}}</td>
                                     <td>{{$car->no_mesin}}</td>
                                     <td>{{$car->nama_stnk}}</td>
-                                    <td>{{$car->tanggal_terima}}</td>
                                     <td>@currency($car->dp)</td>
                                     <td>@currency($car->estimasi)</td>
+                                    <td>{{\Carbon\Carbon::createFromDate($car->tanggal_terima)->isoFormat('D MMMM Y')}}</td>
                                     <td>{{$car->keterangan}}</td>
                                     <td>{{$car->user->name}}</td>
                                     <td>
@@ -175,11 +177,15 @@
                                         </span>
                                     </td>
                                     <td>
-                                        <a href="#mymodal" 
+                                        {{-- <a href="#mymodal" 
                                             data-remote="{{route('cars.edit', $car->id)}}"
                                             data-toggle="modal"
                                             data-target="#mymodal"
                                             class="btn btn-success">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </a> --}}
+
+                                        <a href="{{route('cars.edit', $car->id)}}" class="btn btn-success">
                                             <i class="fa fa-pencil-alt"></i>
                                         </a>
 
@@ -237,7 +243,6 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
     <style>
         .button-footer{
             width: 60px;
@@ -250,6 +255,9 @@
         }
     </style>
 @stop
+
+@section('css')
+@endsection
 
 @section('js')
 <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
@@ -272,8 +280,6 @@
             $('#layanan').select2();
         });
 
-        var quill = new Quill('#editor');
-
         jQuery(document).ready(function($){
         $('#mymodal').on('show.bs.modal', function(e){
             var button = $(e.relatedTarget);
@@ -295,4 +301,3 @@
 @section('plugins.Datatables', true)
 @section('plugins.DatatableResponsive', true)
 @section('plugins.Select2', true)
-@section('plugins.Quill', true)

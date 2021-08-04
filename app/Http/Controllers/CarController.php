@@ -7,6 +7,7 @@ use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDO;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CarController extends Controller
 {
@@ -58,6 +59,8 @@ class CarController extends Controller
         $cars->keterangan = $request->keterangan;
         
         $cars->save();
+
+        Alert::toast('Data layanan berhasil ditambahkan!', 'success');
 
         return redirect()->route('cars.index')->with('success', 'Pencatatan layanan berhasil ditambahkan!');
     }
@@ -136,6 +139,8 @@ class CarController extends Controller
 
         $car->save();
 
+        Alert::toast('Data layanan berhasil diupdate', 'success');
+
         return redirect()->route('cars.index')->with('success', 'Data layanan berhasil diupdate!');
     }
 
@@ -147,7 +152,9 @@ class CarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $car = Car::find($id)->delete();
+
+        Alert::toast('Data layanan berhasil dihapus', 'success');
     }
 
     public function setStatus(Request $request, $id)
@@ -160,6 +167,7 @@ class CarController extends Controller
         $car->status = $request->status;
         $car->save();
 
+        Alert::toast('Status layanan berhasil diganti', 'success');
         return redirect()->route('cars.index');
     }
 }
