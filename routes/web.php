@@ -27,5 +27,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('cars/{id}/set-status', 'CarController@setStatus')
                 ->name('cars.status');
     Route::resource('cars', 'CarController');
+    Route::get('/export_excel', 'CarController@export_excel')
+            ->name('car.export');
     
 });

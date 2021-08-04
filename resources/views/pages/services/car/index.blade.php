@@ -4,8 +4,11 @@
 
 @section('content_header')
     <button class="btn btn-primary button-footer mb-3" title="Tambah Data" data-toggle="collapse" data-target="#collapseCreate">
-        <i class="fas fa-plus"></i>
+        <i class="fas fa-plus fa-2x"></i>
     </button>
+    <a href="{{route('car.export')}}" class="btn btn-success button-footers mb-3" title="Download Data Layanan">
+        <i class="fas fa-download fa-2x center"></i>
+    </a>
 @endsection
 
 @section('content')
@@ -245,8 +248,19 @@
 @section('css')
     <style>
         .button-footer{
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
+            z-index: 3;
+            position: fixed;  
+            right: 30px;
+            bottom:10px;
+            border-radius: 50% !important
+        }
+
+        .button-footers{
+            width: 55px;
+            height: 55px;
+            margin-right: 60px;
             z-index: 3;
             position: fixed;  
             right: 30px;
