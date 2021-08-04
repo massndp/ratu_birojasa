@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Layanan')
+@section('title', 'Layanan Mobil')
 
 @section('content_header')
     <button class="btn btn-primary button-footer mb-3" title="Tambah Data" data-toggle="collapse" data-target="#collapseCreate">
@@ -88,7 +88,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h3>Data User</h3>
+              <h3>Data Layanan Mobil</h3>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div>
@@ -203,22 +203,6 @@
        </div>
    </div>
 
-
-   <div class="modal" id="mymodal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <i class="fa fa-spinner fa-spin"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
    {{-- MODAL HAPUS --}}
     <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDeleteLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -274,17 +258,6 @@
 @endsection
 
 @section('js')
-<script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-            .create( document.querySelector( '#ckeditor' ) )
-            .then( editor => {
-                    console.log( editor );
-            } )
-            .catch( error => {
-                    console.error( error );
-            } );
-</script>
     <script>
         $(document).ready(function(){
             $('#cars').DataTable({
@@ -292,14 +265,6 @@
             } );
             $('#customer').select2();
             $('#layanan').select2();
-        });
-
-        jQuery(document).ready(function($){
-        $('#mymodal').on('show.bs.modal', function(e){
-            var button = $(e.relatedTarget);
-            var modal = $(this);
-            modal.find('.modal-body').load(button.data("remote"));
-             });
         });
 
         $('#modalDelete').on('show.bs.modal',function(e){

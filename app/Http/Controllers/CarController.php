@@ -68,7 +68,7 @@ class CarController extends Controller
 
         Alert::toast('Data layanan berhasil ditambahkan!', 'success');
 
-        return redirect()->route('cars.index')->with('success', 'Pencatatan layanan berhasil ditambahkan!');
+        return redirect()->route('cars.index');
     }
 
     /**
@@ -147,7 +147,7 @@ class CarController extends Controller
 
         Alert::toast('Data layanan berhasil diupdate', 'success');
 
-        return redirect()->route('cars.index')->with('success', 'Data layanan berhasil diupdate!');
+        return redirect()->route('cars.index');
     }
 
     /**
@@ -158,9 +158,10 @@ class CarController extends Controller
      */
     public function destroy($id)
     {
-        $car = Car::find($id)->delete();
+        Car::find($id)->delete();
 
         Alert::toast('Data layanan berhasil dihapus', 'success');
+        return redirect()->route('cars.index');
     }
 
     public function setStatus(Request $request, $id)
