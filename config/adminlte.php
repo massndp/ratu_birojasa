@@ -253,6 +253,12 @@ return [
         //     'label'       => 4,
         //     'label_color' => 'success',
         // ],
+        [
+            'text' => 'Dashboard',
+            'route' => 'home',
+            'icon' => 'fas fa-fw fa-home'
+        ],
+
         ['header' => 'Akun'],
         [
             'text' => 'Akun User',
