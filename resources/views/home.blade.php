@@ -4,7 +4,7 @@
 
 @section('content_header')
 <div class="container mt-5 mb-3" align="center">
-    <h1 style="font-size: 45px">Dashboard Ratu Lestari</h1>
+    <h1 style="font-size: 45px;font-family: assistant, sens-serif">Dashboard Ratu Lestari</h1>
 </div>
 @stop
 
@@ -119,7 +119,7 @@
                   <div class="inner">
                   <h3>{{$motor}}</h3>
           
-                    <p>Total Layanan Mobil</p>
+                    <p>Total Layanan Motor</p>
                   </div>
                   <div class="icon">
                       <i class="fas fa-motorcycle"></i>

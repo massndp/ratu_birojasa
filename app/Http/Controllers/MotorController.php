@@ -90,7 +90,7 @@ class MotorController extends Controller
     public function edit($id)
     {
         $motor = Motor::find($id);
-        return view('pages.services.car.edit', [
+        return view('pages.services.motor.edit', [
             'motor' => $motor
         ]);
     }
@@ -146,7 +146,7 @@ class MotorController extends Controller
 
         Alert::toast('Data layanan berhasil diupdate', 'success');
 
-        return redirect()->route('cars.index');
+        return redirect()->route('motors.index');
     }
 
     /**
